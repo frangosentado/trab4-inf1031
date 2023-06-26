@@ -18,14 +18,14 @@ def registra_jogo():
         writeJson("jogos.json",jogos)
 
 
-def add_estoque_jogo(jogos,nomeJogo,qtd):
+def add_estoque_jogo(jogos,nomeJogo,qtd:int):
     try:
         jogos[nomeJogo]["qtd"] += qtd
         writeJson("jogos.json",jogos)
         print(f"{qtd} unidades do jogo {nomeJogo} adicionadas com sucesso!")
         return 0
-    except KeyError:
-        print("Jogo nao existe")
+    except Exception:
+        print("Quantidade inválida")
         return 1
     
 def remove_estoque_jogo(jogos,nomeJogo,qtd):
@@ -37,6 +37,16 @@ def remove_estoque_jogo(jogos,nomeJogo,qtd):
     except KeyError:
         print("Jogo nao existe")
         return 1
+
+def remove_jogo(nomeJogo):
+    jogos = readJson("jogos.json")
+    if jogos.get(nomeJogo):
+        jogos.pop(nomeJogo)
+        writeJson("jogos.json",jogos)
+        print("Jogo removido!")
+    else:
+        print("Jogo inexistente no catalogo!")
+        return
     
 def catalogo():
     jogos = readJson("jogos.json")
