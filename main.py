@@ -9,7 +9,7 @@ with open("saida.xml", "w") as f:
 
 while True:
 
-    opcao = input("Escolha uma opcao:\n1 - Entrar como locadora\n2 - Entrar como cliente\nOpcao: ")
+    opcao = input("Escolha uma opcao:\n1 - Entrar como locadora\n2 - Entrar como cliente\nENTER - Sair\nOpcao: ")
     
     if opcao == "":
         print("Encerrando programa...")
@@ -17,13 +17,15 @@ while True:
 
     if opcao == "1":
         while True:
-            opcao = input("Escolha uma opcao:\n1 - Registar/aterar jogo\nOpcao: ")
+            opcao = input("Escolha uma opcao:\n1 - Registar/aterar jogo\nENTER - Sair do modo locadora\nOpcao: ")
 
             if opcao == "":
                 print("Saindo do modo locadora...")
                 break
             elif opcao == "1":
                 registra_jogo()
+            else:
+                print("Comando inválido")
                 
 
     elif opcao == "2":
@@ -31,7 +33,7 @@ while True:
 
         if login(username):
             while True:
-                    opcao = input("Escolha uma opcao:\n1 - Requisicao de compra\n2 - Busca de Jogo\n3 - Realizar aluguel\n4 - Realizar devolucao\nOpcao: ")
+                    opcao = input("Escolha uma opcao:\n1 - Requisicao de compra\n2 - Busca de Jogo\n3 - Realizar aluguel\n4 - Realizar devolucao\nENTER - Sair do modo cliente\nOpcao: ")
 
                     if opcao == "":
                         print("Saindo do modo cliente...")
@@ -53,5 +55,10 @@ while True:
                     elif opcao == "4":
                         print("Realizar devolucao")
                         registra_devolucao(username)
+                    else:
+                        print("Comando inválido")
         else:
             print("Erro ao realizar login. Saindo do modo cliente...")
+
+    else:
+        print("Comando inválido")

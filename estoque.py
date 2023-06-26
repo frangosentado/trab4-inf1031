@@ -37,3 +37,9 @@ def remove_estoque_jogo(jogos,nomeJogo,qtd):
     except KeyError:
         print("Jogo nao existe")
         return 1
+    
+def catalogo():
+    jogos = readJson("jogos.json")
+    print("CATÁLOGO:")
+    for jogo,dictJogo in jogos.items():
+        print("Nome:", jogo, "- Preço: R$", dictJogo["preco"], "- Quantidade disponivel:",dictJogo["qtd"])

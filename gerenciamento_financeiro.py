@@ -1,6 +1,6 @@
 from jsonFuncs import *
 
-def realiza_operacao(tipo, valor:float):
+def realiza_operacao(tipo:str, valor:float):
 
     # Lê os dados financeiros do arquivo JSON
     financeiro = readJson("financeiro.json")
@@ -10,11 +10,13 @@ def realiza_operacao(tipo, valor:float):
 
     if tipo == "aluguel":
         saldo += valor  # Adiciona o valor do aluguel ao saldo
+        print(f"R${valor} adicionados ao saldo da locadora!")
     elif tipo == "compra": # Subtrai o valor da compra do saldo
-        if saldo <= valor:
-            saldo -= valor  
+        if valor <= saldo:
+            saldo -= valor
+            print("Compra realizada!")
         else:
-            print("saldo insuficiente para realizar esta operacao!")
+            print("Saldo insuficiente para realizar esta operacao!")
             return 1
     else:
         print("Tipo de operacao invalida")

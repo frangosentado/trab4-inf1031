@@ -11,6 +11,8 @@ def registra_aluguel(username):
     alugueis = readJson("alugueis.json")
     jogos = readJson("jogos.json")
 
+    catalogo()
+
     nomeJogo = input("Digite o nome do jogo que você deseja alugar: ")
 
     alugueis["realizados"] = alugueis.get("realizados", {})
@@ -33,6 +35,7 @@ def registra_aluguel(username):
             if opcao:
                 alugueisUser[nomeJogo] = {"data": f"{datetime.now()}"}
                 alugueis["realizados"][username] = alugueisUser
+                realiza_operacao("aluguel",preco)
                 remove_estoque_jogo(jogos,nomeJogo,1)
                 print(f"Aluguel do {nomeJogo} realizado com sucesso!")
             else:
@@ -50,6 +53,7 @@ def registra_aluguel(username):
                     preco = respostaBusca["preco"]
                     if realiza_operacao("compra",float(preco)) == 0:
                         compra(nomeJogo,2)
+                        add_estoque_jogo(jogos,nomeJogo,2)
                         falhasJogo = 0
                     else:
                         print("Operacao cancelada!")
@@ -93,5 +97,3 @@ def registra_devolucao(username):
         json.dump(jogos,f,ensure_ascii=False,indent=4)
 
     print(f"Devolucao do {nomeJogo} realizada com sucesso!")
-
-

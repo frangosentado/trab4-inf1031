@@ -19,13 +19,9 @@ def parseResponse():
                 response = f.readlines()
                 if response == []:
                     raise Exception
-                print(response)
                 statusCode = response[0].strip("<status>").strip("</status>\n")
-                print(statusCode) 
                 body = response[1]
-                print(body)
                 with open("./saida.xml", "w") as f2:
-                    sleep(5)
                     f2.write("")
                 break
         except Exception:
@@ -37,9 +33,7 @@ def parseResponse():
 def interpretaResposta(statusCode:int,body:str):
     if int(statusCode) == 0:
         if body.startswith("<rbs>"):
-            print("rbs recebida")
             body =  body.strip("<rbs>").strip("</rbs>\n").split("-")
-            print("rbs filtrada: ",body[0],body[1])
             return {"nome": body[0],"preco":body[1]}   
         elif body.startswith("<rcs>"):
             print("rcs recebida")
