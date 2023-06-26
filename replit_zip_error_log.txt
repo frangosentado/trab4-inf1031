@@ -1,1 +1,0 @@
-{"error":"lstat /home/runner/T4-Programacao-Modular/.testes.c.1571632712~: no such file or directory","level":"error","msg":"unable to stat .testes.c.1571632712~","time":"2023-06-25T23:24:54Z"}
