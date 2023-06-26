@@ -1,0 +1,14 @@
+{
+    "opa": {
+        "qtd": 13,
+        "preco": 40.99
+    },
+    "valaveiros": {
+        "qtd": 20,
+        "preco": 13.99
+    },
+    "teste": {
+        "qtd": 0,
+        "preco": 10.0
+    }
+}
