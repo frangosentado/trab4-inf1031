@@ -23,7 +23,11 @@ while True:
                 print("Saindo do modo locadora...")
                 break
             elif opcao == "1":
-                registra_jogo()
+                try:
+                    registra_jogo()
+                except Exception as e:
+                    print(e)
+                    continue
             else:
                 print("Comando inválido")
                 
@@ -33,26 +37,15 @@ while True:
 
         if login(username):
             while True:
-                    opcao = input("Escolha uma opcao:\n1 - Requisicao de compra\n2 - Busca de Jogo\n3 - Realizar aluguel\n4 - Realizar devolucao\nENTER - Sair do modo cliente\nOpcao: ")
+                    opcao = input("Escolha uma opcao:\n1 - Realizar aluguel\n2 - Realizar devolucao\nENTER - Sair do modo cliente\nOpcao: ")
 
                     if opcao == "":
                         print("Saindo do modo cliente...")
                         break
                     elif opcao == "1":
-                        print("Requisicao de compra")
-                        nomeJogo = input("Qual o nome do jogo que voce deseja comprar? ")
-                        quantidade = input("Quantas unidades desse jogo voce deseja comprar? ")
-                        compra(nomeJogo,quantidade)
-                        print("Requisicao enviada!")
-                    elif opcao == "2":
-                        print("Busca de jogo")
-                        nomeJogo = input("Qual o nome do jogo que voce deseja buscar? ")
-                        busca(nomeJogo)
-                        print("Busca enviada!")
-                    elif opcao == "3":
                         print("Realizar aluguel")
                         registra_aluguel(username)
-                    elif opcao == "4":
+                    elif opcao == "2":
                         print("Realizar devolucao")
                         registra_devolucao(username)
                     else:
